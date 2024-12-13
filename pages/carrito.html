@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <!-- Vinculación de Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-facturacion {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-facturacion:hover {
+            background-color: #218838;
+        }
+
+        .btn-danger {
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white text-center">
+                <h2>Carrito de Compras</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Subservicio</th>
+                            <th>Detalles</th>
+                            <th>Precio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        <!-- Aquí se mostrarán los elementos del carrito -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-right font-weight-bold">Total:</td>
+                            <td id="cart-total">$0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="text-right">
+                    <button class="btn-facturacion mt-3" onclick="procederAFacturacion()">Proceder a
+                        Facturación</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript para recuperar y mostrar datos -->
+    <script>
+         // Verificar si el usuario está logueado al intentar acceder al carrito
+         window.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('userName');
+            
+            // Si el usuario no está logueado, redirigir a la página de login
+            if (!userName) {
+                window.location.href = 'login.html';
+            } else {
+                cargarCarrito();  // Si está logueado, cargar el carrito
+            }
+        });
+
+        async function cargarCarrito() {
+            try {
+                const response = await fetch("http://172.16.0.117:5000/obtener-carrito");
+                if (!response.ok) throw new Error("Error al obtener los datos del carrito");
+
+                const items = await response.json();
+                const cartTable = document.getElementById("cart-items");
+                const cartTotal = document.getElementById("cart-total");
+                let total = 0;
+
+                cartTable.innerHTML = ""; // Limpia la tabla antes de agregar los datos
+
+                items.forEach((item, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${item.servicio}</td>
+                        <td>${item.subservicio}</td>
+                        <td>${item.detalles}</td>
+                        <td>$${parseFloat(item.precio || 0).toFixed(2)}</td>
+                        <td><button class="btn btn-danger btn-sm" onclick="eliminarItem(${index})">Eliminar</button></td>
+                    `;
+                    cartTable.appendChild(row);
+                    total += parseFloat(item.precio || 0);
+                });
+
+                cartTotal.textContent = `$${total.toFixed(2)}`;
+            } catch (error) {
+                console.error("Error al cargar los datos del carrito:", error);
+            }
+        }
+
+        // Llama a la función al cargar la página
+        cargarCarrito();
+
+        async function eliminarItem(index) {
+            try {
+                const response = await fetch(`http://172.16.0.117:5000/eliminar-item/${index}`, {
+                    method: "DELETE",
+                });
+
+                if (response.ok) {
+                    alert("Servicio eliminado correctamente.");
+                    cargarCarrito(); // Recarga el carrito actualizado
+                } else {
+                    throw new Error("Error al eliminar el servicio.");
+                }
+            } catch (error) {
+                console.error("Error al eliminar el servicio:", error);
+            }
+        }
+
+        function procederAFacturacion() {
+            alert("Redirigiendo a la facturación...");
+            window.location.href = "facturacion.html";
+        }
+
+        // Cargar los datos al cargar la página
+        document.addEventListener("DOMContentLoaded", cargarCarrito);
+    </script>
+
+    <!-- Vinculación de Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

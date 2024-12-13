@@ -1,0 +1,61 @@
+Servicio: Pintado de Artículos de Cuero
+Subservicio: Pintura personalizada
+Nombre: Samael
+Correo: alamsrh792@gmail.com
+Detalles: Necesito que pinten estos zapatos con los colores de la bandera del Ecuador
+Teléfono: 0963211011
+Precio: 16
+-----------------------------
+Servicio: Pintado de Artículos de Cuero
+Subservicio: Pintar chompas de cuero
+Nombre: Samael
+Correo: alamsrh792@gmail.com
+Detalles: Necesito pintar una chompa de cuero a color negro, porque se esta desgastando
+Teléfono: 0963211011
+Precio: 15
+
+
+-----------------------------
+Servicio: Reparación de Mochilas
+Subservicio: Arreglo de riatas
+Nombre: Samael
+Correo: alamsrh792@gmail.com
+Detalles: Cambio de riatas mordidas por el perro
+Teléfono: 0963211011
+Precio: 7
+-----------------------------
+Servicio: Pintado de Artículos de Cuero
+Subservicio: Pintura personalizada
+Nombre: Samael
+Correo: alamsrh792@gmail.com
+Detalles: Necesito pintar estos zapatos de otra manera
+Teléfono: 0963211011
+Precio: 16
+
+-----------------------------
+Servicio: Pintado de Artículos de Cuero
+Subservicio: Pintura personalizada
+Nombre: Patito
+Correo: pnona@puce.edu.ec
+Detalles: Necesito pintarlos con la bandera del Quito
+Teléfono: 0987545211
+Precio: 16
+-----------------------------
+
+Servicio: Reparación de Mochilas
+Subservicio: Cambio de hebillas y broches
+Nombre: Patito
+Correo: pnona@puce.edu.ec
+Detalles: AAA
+Teléfono: 0987545211
+Precio: 9
+-----------------------------
+Servicio: No especificado
+Subservicio: No especificado
+Nombre: Alejo
+Correo: alejo@gmail.com
+Detalles: asasa
+Teléfono: 0925147578
+Precio: 0
+
+-----------------------------

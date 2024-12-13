@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosedora de Calzado - Inicio</title>
+    <!-- Vinculación de Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --header-bg-color: #343a40;
+            --header-text-color: white;
+        }
+
+        .theme-dark {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --header-bg-color: #000000;
+            --header-text-color: #28a745;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-container {
+            background-color: var(--header-bg-color);
+            color: var(--header-text-color);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-container h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .navbar-custom {
+            background-color: var(--header-bg-color);
+        }
+
+        .navbar-nav {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            color: #218838;
+        }
+
+        .welcome-message-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--header-bg-color);
+            align-items: center;
+            top: 10px;
+            right: 20px;
+            left: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .welcome-message {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--header-text-color);
+        }
+
+        .logout-container {
+            text-align: right;
+        }
+
+        #logout-link {
+            font-size: 16px;
+            color: #d9534f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #logout-link:hover {
+            color: #c9302c;
+        }
+
+        /* Estilo del toggle de tema */
+        .theme-toggle-container {
+            position: sticky;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle.active {
+            background-color: #28a745;
+        }
+
+        .theme-toggle.active::before {
+            transform: translateX(30px);
+        }
+    </style>
+    
+</head>
+
+<body>
+    <!-- Botón para alternar entre modo día y noche -->
+    <div class="theme-toggle-container">
+        <div id="theme-toggle" class="theme-toggle"></div>
+    </div>
+
+    <!-- Contenedor del encabezado con título centrado -->
+    <div class="header-container">
+        <h1>Cosedora de Calzado</h1>
+        <div class="nav-links" id="nav-links">
+            <a href="pages/login.html">Iniciar Sesión</a>
+            <a href="pages/register.html">Registrarse</a>
+        </div>
+    </div>
+
+    <!-- Contenedor para el mensaje de bienvenida y el link de cerrar sesión -->
+    <div class="welcome-message-container" id="welcome-container" style="display: none;">
+        <div class="welcome-message">
+            Bienvenido, <span id="welcome-name"></span>
+        </div>
+        <div class="logout-container">
+            <a href="#" id="logout-link">Cerrar sesión</a>
+        </div>
+    </div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/contacto.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner de la página de inicio -->
+    <div class="container text-center my-5">
+        <img src="imagenes/Logo.png" class="img-fluid" alt="Zapato y herramientas de reparación"
+            style="max-width: 80%; height: auto;">
+    </div>
+
+    <!-- Sección de bienvenida -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">¡Bienvenido a Cosedora de Calzado!</h2>
+        <p class="text-justify lead">
+            Somos tu mejor opción en la reparación y cuidado de calzado. En esta página encontrarás nuestros servicios
+            especializados en la reparación de zapatos, costura, cambio de suelas y mucho más.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Cosedora de Calzado. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Vinculación de Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Al cargar la página, comprobamos si el usuario ha iniciado sesión
+        window.addEventListener('DOMContentLoaded', () => {
+            const userName = localStorage.getItem('userName'); // Obtener el nombre del usuario desde localStorage
+
+            if (userName) {
+                document.getElementById("welcome-name").textContent = userName;
+                document.getElementById("nav-links").style.display = "none";
+                document.getElementById("welcome-container").style.display = "flex";
+            } else {
+                document.getElementById("nav-links").style.display = "flex";
+                document.getElementById("welcome-container").style.display = "none";
+            }
+
+            document.getElementById("logout-link").addEventListener('click', () => {
+                localStorage.removeItem('userName');
+                location.reload();
+            });
+
+            // Toggle de modo día/noche
+            const themeToggle = document.getElementById("theme-toggle");
+            if (localStorage.getItem("theme") === "theme-dark") {
+                document.body.classList.add("theme-dark");
+                themeToggle.classList.add("active");
+            }
+
+            themeToggle.addEventListener("click", () => {
+                if (document.body.classList.contains("theme-dark")) {
+                    document.body.classList.remove("theme-dark");
+                    themeToggle.classList.remove("active");
+                    localStorage.setItem("theme", "theme-light");
+                } else {
+                    document.body.classList.add("theme-dark");
+                    themeToggle.classList.add("active");
+                    localStorage.setItem("theme", "theme-dark");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

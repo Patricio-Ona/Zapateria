@@ -1,0 +1,5 @@
+{"name":"Samael","email":"alamsrh792@gmail.com","phone":"0963211011","password":"Samael1234"}
+{"name":"Juanjito","email":"asjhajs@gmail.com","phone":"0987545211","password":"1234"}
+{"name":"Patito","email":"pnona@puce.edu.ec","phone":"0987545211","password":"1234"}
+{"name":"Fausto","email":"f@puce.edu.ec","phone":"0925147852","password":"12345"}
+{"name":"Alejo","email":"alejo@gmail.com","phone":"0925147578","password":"12345"}
